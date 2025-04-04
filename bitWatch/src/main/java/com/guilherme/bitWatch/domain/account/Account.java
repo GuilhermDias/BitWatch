@@ -1,5 +1,6 @@
 package com.guilherme.bitWatch.domain.account;
 
+import com.guilherme.bitWatch.domain.user.RequestUser;
 import com.guilherme.bitWatch.domain.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -31,4 +32,11 @@ public class Account {
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
+
+    public Account(User user) {
+        this.user = user;
+        this.email = user.getEmail();
+        this.document = user.getDocument();
+        this.balance = 0.0;
+    }
 }
