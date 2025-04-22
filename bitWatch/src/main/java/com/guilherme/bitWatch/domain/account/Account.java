@@ -1,21 +1,13 @@
 package com.guilherme.bitWatch.domain.account;
 
-import com.guilherme.bitWatch.domain.user.RequestUser;
+
 import com.guilherme.bitWatch.domain.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity(name = "accounts")
 @Table(name = "accounts")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class Account {
 
     @Id
@@ -38,5 +30,56 @@ public class Account {
         this.email = user.getEmail();
         this.document = user.getDocument();
         this.balance = 0.0;
+    }
+
+    public Account(){
+    }
+
+    public Account(Long id, String email, String document, Double balance, User user) {
+        this.id = id;
+        this.email = email;
+        this.document = document;
+        this.balance = balance;
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
